@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+
+//colors
+$background-color: purple;
+$navbar-color: #00ddff;
+$input-color: white;
+$headlines-color : white;
+$text-color: black;
+
+//fonts
+$headline-font: 'Lora', 'Times New Roman', Times, serif;
+$paragraph-font: 'Helvetica', Arial, sans-serif;
+
+//set breakpoint sizes
+$break-small: 20em;
+$break-medium: 31em;
+$break-large: 60em;
+
+@mixin breakpoint($break) {
+@if $break == large {
+@media (max-width: $break-large) { @content; }
+}
+@else if $break == medium {
+@media (max-width: $break-medium) { @content; }
+}
+@else if $break == small {
+@media (max-width: $break-small) { @content; }
+} @else 
+{
+@media ($break) { @content; }
+}
+}               
+   
+
+
+body {
+    background: white;
+    @include breakpoint(large) { background-color: white; }
+    @include breakpoint(medium) { background-color: cyan; }
+    @include breakpoint(small) { background-color: green; }
+    }    
+  
+
+html{
+    color: $text-color;
+    font-family: $paragraph-font;
+}
+nav {
+    a{
+        background-color: $background-color;
+    }
+    li{
+        list-style-type: none;
+    }
+}
+
+nav a, nav a:visited, p a, p a:visited, h2 a, h2 a:visited {
+    color: $navbar-color;
+}
+nav a:active, p a:active, h2 a:active {
+    color: $text-color;
+}
+nav a:hover, p a:hover, h2 a:hover {
+    color: $navbar-color;
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+h1 a {
+    color: $background-color;
+    font-family: $headline-font;
+    font-size: 4rem;
+}
+h2 {
+    font-family: $headline-font;
+
+}
+nav {
+    border-top: 2px solid $background-color;
+    border-bottom: 2px solid $background-color;
+    text-transform: uppercase;
+    
+    font-family: $headline-font;   
+}
+nav li {
+    padding: .5rem;
+}
+header {
+    text-align: center;
+}
+.post-date {
+    border-bottom: 2px solid $input-color;
+    text-transform: uppercase;
+    text-align: right;
+    color: $text-color;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-family: $headline-font;
+}
+main {
+    padding: 2%;
+}
+img {
+    width: 100%;
+}
+
+/* large screen  */
+//@media only screen and (min-width:600px){
+
+body {
+    @include breakpoint(large) {
+
+}
+ul {
+    display: flex;
+    justify-content: flex-end;
+}
+article {
+    display: flex;
+    flex: 1 1 auto;
+}
+.post-date {
+    border-bottom: 0px;
+    min-width: 25%;
+    padding: 2%;
+}
+figure {
+    max-width: 200px;
+    margin: 0 auto;
+}
+.post-content {
+    border-left:  2px solid #d0d0d0;
+    padding: 2%;
+    border-bottom:  2px solid #d0d0d0;
+}
+}
